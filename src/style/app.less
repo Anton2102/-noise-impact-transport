@@ -1,8 +1,27 @@
 .nit {
   text-align: center;
 
+  &-flex {
+    display: flex;
+  }
+
+  &-formula {
+    font-size: 28px;
+
+    &-container {
+      max-width: 1000px;
+      align-items: flex-end;
+      margin: auto;
+
+      &-input { width: 200px; }
+    }
+
+    &-index { font-size: 16px; }
+    &-answer { color: #dc3545; }
+  }
+
   &-App__content {
-    border-top: 1px solid black;
+    border-top: 1px solid #d5d5d5;
 
     &-option {
       display: flex;
