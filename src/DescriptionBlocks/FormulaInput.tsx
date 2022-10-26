@@ -2,6 +2,7 @@ import {Form} from 'react-bootstrap';
 
 interface IFormulaInput {
     keyFr: string;
+    task: string;
     result: string;
     isResult: boolean;
     sample: any;
@@ -11,7 +12,7 @@ interface IFormulaInput {
     callBackSetIsResult: Function;
 }
 
-const FormulaInput = ({keyFr, result, isResult, sample, valueInput, callBack, callBackSetInput, callBackSetIsResult}: IFormulaInput) => {
+const FormulaInput = ({keyFr, task, result, isResult, sample, valueInput, callBack, callBackSetInput, callBackSetIsResult}: IFormulaInput) => {
 
     return (
         <div className="nit-flex nit-formula-container">
@@ -19,7 +20,7 @@ const FormulaInput = ({keyFr, result, isResult, sample, valueInput, callBack, ca
             {isResult && (
                 <span className="nit-formula-answer">{result}</span>
             ) || (
-                <Form.Control className="nit-formula-container-input" value={valueInput} placeholder={keyFr} onChange={(e)=>{callBack(e.target.value, callBackSetInput, callBackSetIsResult, keyFr)}}/>
+                <Form.Control className="nit-formula-container-input" value={valueInput} placeholder={keyFr} onChange={(e)=>{callBack(e.target.value, callBackSetInput, callBackSetIsResult, keyFr, task)}}/>
             )}
         </div>
     );

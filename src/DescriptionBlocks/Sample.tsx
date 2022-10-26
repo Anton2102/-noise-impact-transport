@@ -32,4 +32,8 @@ const F = (): ReactNode => {
     return ( <>F =</> );
 }
 
-export {LTPR, LI, LD, LKAP, LDIZ, LL, KP, F};
+const LEKV = (): ReactNode => {
+    return ( <>L<span className="nit-formula-index">ЭКВ</span> =</> );
+}
+
+export {LTPR, LI, LD, LKAP, LDIZ, LL, KP, F, LEKV};
