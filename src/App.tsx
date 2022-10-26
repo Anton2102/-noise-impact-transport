@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import Header from './DescriptionBlocks/Header'
+import Header from './DescriptionBlocks/Header';
+import FormulaInput from './DescriptionBlocks/FormulaInput';
+import { LTPR, LI, LD, LKAP, LDIZ, LL, KP, F } from './DescriptionBlocks/Sample'
 import { Form, Button } from 'react-bootstrap';
-import data, {ITask1} from './dataOptions'
-import {answerTask1, filterOption} from './help';
+import data from './dataOptions';
+import { answerTask1, filterOption } from './help';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style/app.css';
-
 
 const App = () => {
     const [isOption, setIsOption] = useState(false);
@@ -14,12 +15,19 @@ const App = () => {
     const [isLTRP, setIsLTRP] = useState(false);
     const [valueLTRP, setValueLTRP] = useState('');
     const [isLI, setIsLI] = useState(false);
+    const [valueLI, setValueLI] = useState('');
     const [isLD, setIsLD] = useState(false);
+    const [valueLD, setValueLD] = useState('');
     const [isLKAP, setIsLKAP] = useState(false);
-    const [isDIZ, setIsDIZ] = useState(false);
+    const [valueLKAP, setValueLKAP] = useState('');
+    const [isLDIZ, setIsLDIZ] = useState(false);
+    const [valueLDIZ, setValueLDIZ] = useState('');
     const [isLL, setIsLL] = useState(false);
+    const [valueLL, setValueLL] = useState('');
     const [isKP, setIsKP] = useState(false);
+    const [valueKP, setValueKP] = useState('');
     const [isF, setIsF] = useState(false);
+    const [valueF, setValueF] = useState('');
 
     const _choseOption = () => {
         const num = Number(optionValue);
@@ -39,13 +47,6 @@ const App = () => {
             callBacksAnswer(true);
         }
     }
-    // const _setValueLI = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    //     const value = event.target.value;
-    //     setValueTRP(value);
-    //     if (value === data[Number(optionValue) - 1].task1.LI.toString()) {
-    //         setIsTRP(true);
-    //     }
-    // }
 
     return (
         <div className="nit">
@@ -63,49 +64,18 @@ const App = () => {
                             <div className="nit-flex nit-formula-container">
                                 L<span className="nit-formula-index">ЭКВ</span> = L<span className="nit-formula-index">ТРП</span> + ΔL<span className="nit-formula-index">V</span>+ ΔL<span className="nit-formula-index">I</span> + ΔL<span className="nit-formula-index">D</span> + ΔL<span className="nit-formula-index">КАР</span> + ΔL<span className="nit-formula-index">ДИЗ</span> - ΔL<span className="nit-formula-index">L</span>K<span className="nit-formula-index">P</span> + F;
                             </div>
-                            <div className="nit-flex nit-formula-container">
-                                L<span className="nit-formula-index">ТРП</span> + ΔL<span className="nit-formula-index">V</span> =
-                                {isLTRP && (
-                                    <span className="nit-formula-answer">{data[Number(optionValue) - 1].task1.LTRP}</span>
-                                ) || (
-                                    <Form.Control className="nit-formula-container-input" value={valueLTRP} placeholder="Введите вариант" onChange={(e)=>{_setValueTask1(e.target.value, setValueLTRP, setIsLTRP, 'LTRP')}}/>
-                                )}
-                            </div>
-                            <div className="nit-flex nit-formula-container">
-                                ΔL<span className="nit-formula-index">I</span> =
-                                {isLI && (
-                                    <span className="nit-formula-answer">{data[Number(optionValue) - 1].task1.LI}</span>
-                                ) || (
-                                    <Form.Control className="nit-formula-container-input" value={optionValue} placeholder="Введите вариант" onChange={_setOptionInput}/>
-                                )}
-                            </div>
-                            <div className="nit-flex nit-formula-container">
-                                ΔL<span className="nit-formula-index">D</span> =
-                                <Form.Control className="nit-formula-container-input" value={optionValue} placeholder="Введите вариант" onChange={_setOptionInput}/>
-                            </div>
-                            <div className="nit-flex nit-formula-container">
-                                ΔL<span className="nit-formula-index">КАР</span> =
-                                <Form.Control className="nit-formula-container-input" value={optionValue} placeholder="Введите вариант" onChange={_setOptionInput}/>
-                            </div>
-                            <div className="nit-flex nit-formula-container">
-                                ΔL<span className="nit-formula-index">ДИЗ</span> =
-                                <Form.Control className="nit-formula-container-input" value={optionValue} placeholder="Введите вариант" onChange={_setOptionInput}/>
-                            </div>
-                            <div className="nit-flex nit-formula-container">
-                                ΔL<span className="nit-formula-index">L</span> =
-                                <Form.Control className="nit-formula-container-input" value={optionValue} placeholder="Введите вариант" onChange={_setOptionInput}/>
-                            </div>
-                            <div className="nit-flex nit-formula-container">
-                                K<span className="nit-formula-index">P</span> =
-                                <Form.Control className="nit-formula-container-input" value={optionValue} placeholder="Введите вариант" onChange={_setOptionInput}/>
-                            </div>
-                            <div className="nit-flex nit-formula-container">
-                                F =
-                                <Form.Control className="nit-formula-container-input" value={optionValue} placeholder="Введите вариант" onChange={_setOptionInput}/>
-                            </div>
+                            <FormulaInput keyFr="LTRP" isResult={isLTRP} sample={LTPR()} result={data[Number(optionValue) - 1].task1.LTRP.toString()} valueInput={valueLTRP} callBack={_setValueTask1} callBackSetInput={setValueLTRP} callBackSetIsResult={setIsLTRP} />
+                            <FormulaInput keyFr="LI" isResult={isLI} sample={LI()} result={data[Number(optionValue) - 1].task1.LI.toString()} valueInput={valueLI} callBack={_setValueTask1} callBackSetInput={setValueLI} callBackSetIsResult={setIsLI} />
+                            <FormulaInput keyFr="LD" isResult={isLD} sample={LD()} result={data[Number(optionValue) - 1].task1.LD.toString()} valueInput={valueLD} callBack={_setValueTask1} callBackSetInput={setValueLD} callBackSetIsResult={setIsLD} />
+                            <FormulaInput keyFr="LKAP" isResult={isLKAP} sample={LKAP()} result={data[Number(optionValue) - 1].task1.LKAP.toString()} valueInput={valueLKAP} callBack={_setValueTask1} callBackSetInput={setValueLKAP} callBackSetIsResult={setIsLKAP} />
+                            <FormulaInput keyFr="LDIZ" isResult={isLDIZ} sample={LDIZ()} result={data[Number(optionValue) - 1].task1.LDIZ.toString()} valueInput={valueLDIZ} callBack={_setValueTask1} callBackSetInput={setValueLDIZ} callBackSetIsResult={setIsLDIZ} />
+                            <FormulaInput keyFr="LL" isResult={isLL} sample={LL()} result={data[Number(optionValue) - 1].task1.LL.toString()} valueInput={valueLL} callBack={_setValueTask1} callBackSetInput={setValueLL} callBackSetIsResult={setIsLL} />
+                            <FormulaInput keyFr="KP" isResult={isKP} sample={KP()} result={data[Number(optionValue) - 1].task1.KP.toString()} valueInput={valueKP} callBack={_setValueTask1} callBackSetInput={setValueKP} callBackSetIsResult={setIsKP} />
+                            <FormulaInput keyFr="F" isResult={isF} sample={F()} result={data[Number(optionValue) - 1].task1.F.toString()} valueInput={valueF} callBack={_setValueTask1} callBackSetInput={setValueF} callBackSetIsResult={setIsF} />
                         </div>
                     </div>
                 )}
+                {isLTRP && isLI && isLD && isLKAP && isLDIZ && isLL && isKP && isF && <h3>2/10</h3>}
             </div>
         </div>
     );
