@@ -36,4 +36,12 @@ const LEKV = (): ReactNode => {
     return ( <>L<span className="nit-formula-index">ЭКВ</span> =</> );
 }
 
-export {LTPR, LI, LD, LKAP, LDIZ, LL, KP, F, LEKV};
+const WMAX = (): ReactNode => {
+    return ( <>W<span className="nit-formula-index">MAX</span> = 0.5 x (c - 25) =</> );
+}
+
+const AZEL = (): ReactNode => {
+    return ( <>L<span className="nit-formula-index">A,ЗЕЛ</span> =</> );
+}
+
+export {LTPR, LI, LD, LKAP, LDIZ, LL, KP, F, LEKV, WMAX, AZEL};

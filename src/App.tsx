@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Header from './DescriptionBlocks/Header';
 import FormulaInput from './DescriptionBlocks/FormulaInput';
-import { LTPR, LI, LD, LKAP, LDIZ, LL, KP, F, LEKV } from './DescriptionBlocks/Sample'
+import { LTPR, LI, LD, LKAP, LDIZ, LL, KP, F, LEKV, WMAX, AZEL } from './DescriptionBlocks/Sample'
 import { Form, Button } from 'react-bootstrap';
 import data from './dataOptions';
-import { answerTask1, answerTask2, filterOption } from './help';
+import { answerTask1, answerTask2, answerTask3, answerTask4, filterOption } from './help';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style/app.css';
 
@@ -13,6 +13,8 @@ const App = () => {
     const [optionValue, setOption] = useState('');
     const [isShowTask2, setIsShowTask2] = useState(false);
     const [isShowTask3, setIsShowTask3] = useState(false);
+    const [isShowTask4, setIsShowTask4] = useState(false);
+    //const [isShowTask5, setIsShowTask5] = useState(false);
 
     const [isLTRP, setIsLTRP] = useState(false);
     const [valueLTRP, setValueLTRP] = useState('');
@@ -33,6 +35,12 @@ const App = () => {
 
     const [isLEKV, setIsLEKV] = useState(false);
     const [valueLEKV, setValueLEKV] = useState('');
+
+    const [isWMAX, setIsWMAX] = useState(false);
+    const [valueWMAX, setValueWMAX] = useState('');
+
+    const [isAZEL, setIsAZEL] = useState(false);
+    const [valueAZEL, setValueAZEL] = useState('');
 
     const _choseOption = () => {
         const num = Number(optionValue);
@@ -57,6 +65,8 @@ const App = () => {
         switch (task) {
             case 'task1': return answerTask1;
             case 'task2': return answerTask2;
+            case 'task3': return answerTask3;
+            case 'task4': return answerTask4;
         }
         return () => {};
     }
@@ -101,6 +111,19 @@ const App = () => {
                 {isShowTask3 && (
                     <>
                         <h3>3/10</h3>
+                        <div className="nit-formula">
+                            <FormulaInput keyFr="WMAX" task="task3" isResult={isWMAX} sample={WMAX()} result={data[Number(optionValue) - 1].task3.WMAX.toString()} valueInput={valueWMAX} callBack={_setValueTask} callBackSetInput={setValueWMAX} callBackSetIsResult={setIsWMAX} />
+                        </div>
+                        {isWMAX && <Button variant="dark" onClick={() => setIsShowTask4(true)}>Дальше</Button>}
+                    </>
+                )}
+                {isShowTask4 && (
+                    <>
+                        <h3>4/10</h3>
+                        <div className="nit-formula">
+                            <FormulaInput keyFr="AZEL" task="task4" isResult={isAZEL} sample={AZEL()} result={data[Number(optionValue) - 1].task4.AZEL.toString()} valueInput={valueAZEL} callBack={_setValueTask} callBackSetInput={setValueAZEL} callBackSetIsResult={setIsAZEL} />
+                        </div>
+                        {isAZEL && <Button variant="dark" onClick={() => setIsShowTask5(true)}>Дальше</Button>}
                     </>
                 )}
             </div>
