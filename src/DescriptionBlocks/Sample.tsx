@@ -44,4 +44,24 @@ const AZEL = (): ReactNode => {
     return ( <>L<span className="nit-formula-index">A,ЗЕЛ</span> =</> );
 }
 
-export {LTPR, LI, LD, LKAP, LDIZ, LL, KP, F, LEKV, WMAX, AZEL};
+const B = (): ReactNode => {
+    return ( <>ɓ = (a + b) - c =</> );
+}
+
+const AECRB = (): ReactNode => {
+    return ( <>A<span className="nit-formula-index">A.ЭКР.ɓ</span> =</> );
+}
+
+const YGL = (): ReactNode => {
+    return ( <>Угол =</> );
+}
+
+const AECR = (): ReactNode => {
+    return ( <>L<span className="nit-formula-index">A.ЭКР.a</span> =</> );
+}
+
+const L = (): ReactNode => {
+    return ( <>L =</> );
+}
+
+export {LTPR, LI, LD, LKAP, LDIZ, LL, KP, F, LEKV, WMAX, AZEL, B, AECRB, YGL, AECR, L};

@@ -1,12 +1,14 @@
 .nit {
   text-align: center;
 
-  &-flex {
-    display: flex;
-  }
+  &-flex { display: flex; }
+  &-justify-content-center { justify-content: center; }
 
   &-formula {
     font-size: 28px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d5d5d5;
 
     &-container {
       max-width: 1000px;
@@ -16,12 +18,38 @@
       &-input { width: 200px; }
     }
 
+    &-containerUp {
+      display: flex;
+      height: 40px;
+    }
+
+    &-sq {
+
+      &-line {
+        width: 10%;
+        border-top: 1px solid black;
+        position: absolute;
+        margin: 5px 0 0 -5px;
+      }
+    }
+
+    &-sqSymbol {
+      font-size: 32px;
+    }
+
     &-index { font-size: 16px; }
     &-answer { color: #dc3545; }
   }
 
   &-App__content {
     border-top: 1px solid #d5d5d5;
+    margin-top: 30px;
+
+    &-h3 {
+      margin-top: 30px;
+
+      &-nextButton { margin-left: 20px; }
+    }
 
     &-option {
       display: flex;
