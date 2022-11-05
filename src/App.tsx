@@ -7,6 +7,7 @@ import data from './dataOptions';
 import { answerTask1, answerTask2, answerTask3, answerTask4, answerTask5, answerTask6, answerTask7, answerTask8, filterOption } from './help';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style/app.css';
+import ModalResult from "./DescriptionBlocks/ModalResult";
 
 const App = () => {
     /**
@@ -21,6 +22,7 @@ const App = () => {
     const [isShowTask6, setIsShowTask6] = useState(false);
     const [isShowTask7, setIsShowTask7] = useState(false);
     const [isShowTask8, setIsShowTask8] = useState(false);
+    const [lgShow, setLgShow] = useState(false);
 
     /**
      * task1
@@ -286,6 +288,7 @@ const App = () => {
                     </>
                 )}
             </div>
+            <ModalResult lgShow={lgShow}  setLgShow={setLgShow}/>
         </div>
     );
 }
