@@ -24,6 +24,7 @@ export interface ITask4 {
 
 export interface ITask5 {
     B: number;
+    h: number;
 }
 
 export interface ITask6 {
@@ -62,7 +63,7 @@ const data: IData[] = [
         task2: { LEKV: 25.6 },
         task3: { WMAX: 37.5 },
         task4: { AZEL: 12, help: 'Уровень шума осталось снизить на 13,6' },
-        task5: { B: 0.892 },
+        task5: { B: 0.892, h: 5 },
         task6: { AECRB: 18 },
         task7: { YGL: 85, AECR: 16.8 },
         task8: { L: 46.8 }

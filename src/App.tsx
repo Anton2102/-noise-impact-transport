@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Header from './DescriptionBlocks/Header';
 import FormulaInput from './DescriptionBlocks/FormulaInput';
-import { LTPR, LI, LD, LKAP, LDIZ, LL, KP, F, LEKV, WMAX, AZEL, B, AECRB, YGL, AECR, L } from './DescriptionBlocks/Sample'
-import { Form, Button } from 'react-bootstrap';
+import { LTPR, LI, LD, LKAP, LDIZ, LL, KP, F, LEKV, WMAX, AZEL, B, AECRB, YGL, AECR, L, H } from './DescriptionBlocks/Sample'
+import { Button } from 'react-bootstrap';
 import data from './dataOptions';
 import { answerTask1, answerTask2, answerTask3, answerTask4, answerTask5, answerTask6, answerTask7, answerTask8, filterOption } from './help';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -65,6 +65,8 @@ const App = () => {
      */
     const [isB, setIsB] = useState(false);
     const [valueB, setValueB] = useState('');
+    const [valueH, setValueH] = useState('');
+    const [valueBHelp, setValueBHelp] = useState('');
 
     /**
      * task6
@@ -140,16 +142,30 @@ const App = () => {
         return () => {};
     }
 
+    const _checkTask5 = (): void => {
+        const h = data[Number(optionValue) - 1].task5.h;
+        if (h > Number(valueH)) {
+            setValueBHelp('after')
+        } else if (h < Number(valueH)) {
+            setValueBHelp('do')
+        } else {
+            setValueBHelp('er');
+        }
+    }
+
+    const _getHelpTask5 = (): string => {
+        switch (valueBHelp) {
+            case 'do': return 'Понизьте значение h';
+            case 'after': return 'Повысьте значение h';
+            default: return 'Ваши расчеты не верны';
+        }
+    }
+
     return (
         <div className="nit">
-            <Header/>
+            <Header optionValue={optionValue} callBack={_setOptionInput} buttonCallBack={_choseOption} isOption={isOption}/>
             <div className="nit-App__content">
-                {!isOption && (
-                    <div className="nit-App__content-option">
-                        <Form.Control value={optionValue} placeholder="Введите вариант" onChange={_setOptionInput}/>
-                        <Button variant="primary" type="submit" onClick={_choseOption}>Начать</Button>
-                    </div>
-                ) || (
+                {isOption && (
                     <>
                         <div className="nit-flex nit-justify-content-center nit-App__content-h3">
                             <h3>1/8 - Вариант {optionValue}</h3>
@@ -207,12 +223,14 @@ const App = () => {
                     <>
                         <div className="nit-flex nit-justify-content-center nit-App__content-h3">
                             <div>
-                                <h3>5/8 - {data[Number(optionValue) - 1].task4.help}</h3>
-                                <h4>Вычислять значение <b>h</b> следует со значения 3, пока оно не приблизится к нужному результату (3, 4, 5, ...)</h4>
+                                <h3>5/8</h3>
                             </div>
                             {isB && <Button className="nit-App__content-h3-nextButton" variant="dark" onClick={() => setIsShowTask6(true)}>Дальше</Button>}
                         </div>
                         <div className="nit-formula">
+                            {data[Number(optionValue) - 1].task4.help}
+                            <h4>Вычислять значение <b>h</b> следует со значения 3, пока оно не приблизится к нужному результату (3, 4, 5, ...)</h4>
+                            <FormulaInput keyFr="H" task="task5" sample={H()} result={''} valueInput={valueH} callBack={_setValueTask} callBackSetInput={setValueH}/>
                             <div className="nit-flex nit-formula-container">
                                 a = √
                                 <div className="nit-formula-sq">
@@ -227,9 +245,9 @@ const App = () => {
                                     <div className="nit-flex">((h - 1.5)<div className="nit-formula-containerUp"><span className="nit-formula-index">2</span></div> + (c - 7)<div className="nit-formula-containerUp"><span className="nit-formula-index">2</span></div>)</div>
                                 </div>
                             </div>
-                            <div className="nit-formula">
-                                <FormulaInput keyFr="B" task="task5" isResult={isB} sample={B()} result={data[Number(optionValue) - 1].task5.B.toString()} valueInput={valueB} callBack={_setValueTask} callBackSetInput={setValueB} callBackSetIsResult={setIsB} />
-                            </div>
+                            <FormulaInput keyFr="B" task="task5" isResult={isB} sample={B()} result={data[Number(optionValue) - 1].task5.B.toString()} valueInput={valueB} callBack={_setValueTask} callBackSetInput={setValueB} callBackSetIsResult={setIsB} />
+                            <Button variant="primary" type="submit" onClick={_checkTask5}>Проверить вычисления</Button>
+                            <div>{_getHelpTask5()}</div>
                         </div>
                     </>
                 )}
@@ -260,6 +278,7 @@ const App = () => {
                     <>
                         <div className="nit-flex nit-justify-content-center nit-App__content-h3">
                             <h3>8/8</h3>
+                            {isL && <Button className="nit-App__content-h3-nextButton" variant="dark">Посмотреть итоги</Button>}
                         </div>
                         <div className="nit-formula">
                             <FormulaInput keyFr="L" task="task8" isResult={isL} sample={L()} result={data[Number(optionValue) - 1].task8.L.toString()} valueInput={valueL} callBack={_setValueTask} callBackSetInput={setValueL} callBackSetIsResult={setIsL} />

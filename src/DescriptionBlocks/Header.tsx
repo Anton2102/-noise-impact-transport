@@ -1,8 +1,16 @@
 import './style/header.css'
+import {Button, Form} from 'react-bootstrap';
 
-const Header = () => {
+interface IHeader {
+    optionValue: string;
+    callBack: Function;
+    buttonCallBack: Function;
+    isOption: boolean;
+}
+
+const Header = ({optionValue, callBack, buttonCallBack, isOption}: IHeader) => {
     return (
-        <>
+        <div className="nit-Header">
             <h1>РАСЧЕТ И ОЦЕНКА ШУМОВОГО ВОЗДЕЙСТВИЯ ТРАНСПОРТА</h1>
             <b>Цель работы: </b>освоить путем выполнения конкретного расчета методику определения шумового
             загрязнения траспортом и оценить эффективность шумозащитных мероприятий.
@@ -15,7 +23,13 @@ const Header = () => {
                     полосы зеленых насаждений.</li>
                 <li>Расчитать параметры экрана и размеры зеленых насаждений, которые необходимо размезстить между источником шума и защищенными от шума объектами.</li>
             </div>
-        </>
+            {!isOption && (
+                <div className="nit-App__content-option">
+                    <Form.Control value={optionValue} placeholder="Введите вариант" onChange={(event) => callBack(event)}/>
+                    <Button variant="primary" type="submit" onClick={(event) => buttonCallBack(event)}>Начать</Button>
+                </div>
+            )}
+        </div>
     );
 }
 

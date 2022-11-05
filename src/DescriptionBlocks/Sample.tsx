@@ -64,4 +64,8 @@ const L = (): ReactNode => {
     return ( <>L =</> );
 }
 
-export {LTPR, LI, LD, LKAP, LDIZ, LL, KP, F, LEKV, WMAX, AZEL, B, AECRB, YGL, AECR, L};
+const H = (): ReactNode => {
+    return ( <>H =</> );
+}
+
+export {LTPR, LI, LD, LKAP, LDIZ, LL, KP, F, LEKV, WMAX, AZEL, B, AECRB, YGL, AECR, L, H};

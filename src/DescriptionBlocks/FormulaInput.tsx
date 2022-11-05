@@ -4,12 +4,12 @@ interface IFormulaInput {
     keyFr: string;
     task: string;
     result: string;
-    isResult: boolean;
+    isResult?: boolean;
     sample: any;
     valueInput: string;
     callBack: Function;
     callBackSetInput: Function;
-    callBackSetIsResult: Function;
+    callBackSetIsResult?: Function;
 }
 
 const FormulaInput = ({keyFr, task, result, isResult, sample, valueInput, callBack, callBackSetInput, callBackSetIsResult}: IFormulaInput) => {
