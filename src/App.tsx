@@ -249,7 +249,7 @@ const App = () => {
                             </div>
                             <FormulaInput keyFr="B" task="task5" isResult={isB} sample={B()} result={data[Number(optionValue) - 1].task5.B.toString()} valueInput={valueB} callBack={_setValueTask} callBackSetInput={setValueB} callBackSetIsResult={setIsB} />
                             <Button variant="primary" type="submit" onClick={_checkTask5}>Проверить вычисления</Button>
-                            <div>{_getHelpTask5()}</div>
+                            {!isB && (<div>{_getHelpTask5()}</div>)}
                         </div>
                     </>
                 )}
@@ -280,7 +280,7 @@ const App = () => {
                     <>
                         <div className="nit-flex nit-justify-content-center nit-App__content-h3">
                             <h3>8/8</h3>
-                            {isL && <Button className="nit-App__content-h3-nextButton" variant="dark">Посмотреть итоги</Button>}
+                            {isL && <Button className="nit-App__content-h3-nextButton" variant="dark" onClick={() => setLgShow(true)}>Посмотреть итоги</Button>}
                         </div>
                         <div className="nit-formula">
                             <FormulaInput keyFr="L" task="task8" isResult={isL} sample={L()} result={data[Number(optionValue) - 1].task8.L.toString()} valueInput={valueL} callBack={_setValueTask} callBackSetInput={setValueL} callBackSetIsResult={setIsL} />
