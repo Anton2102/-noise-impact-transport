@@ -217,7 +217,7 @@ const data: IData[] = [
         task2: { LEKV: 28.06 },
         task3: { WMAX: 37.5 },
         task4: { AZEL: 12, help: 'Уровень шума осталось снизить на 16.06' },
-        task5: { B: 7.826, h: 5 },
+        task5: { B: 0.892, h: 5 },
         task6: { AECRB: 18 },
         task7: { YGL: 85, AECR: 16.8 },
         task8: { L: 49.26 }
@@ -262,14 +262,14 @@ const data: IData[] = [
         task3: { WMAX: 12.5 },
         task4: { AZEL: 5, help: 'Уровень шума осталось снизить на 13.5' },
         task5: { B: 0.968, h: 5 },
-        task6: { AECRB: 16.5 },
+        task6: { AECRB: 18 },
         task7: { YGL: 85, AECR: 16.8 },
         task8: { L: 56.7 }
     },
     {
         id: '20',
         task1: { LTRP: 84.5, LI: 3, LD: 6, LKAP: -2, LDIZ: 3, LL: 5.7, KP: 0.9, F: 0 },
-        task2: { LEKV: 24.7 },
+        task2: { LEKV: 24.37 },
         task3: { WMAX: 12.5 },
         task4: { AZEL: 5, help: 'Уровень шума осталось снизить на 19.37' },
         task5: { B: 3.041, h: 8 },
